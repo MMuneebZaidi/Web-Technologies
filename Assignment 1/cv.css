@@ -1,0 +1,37 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+.container {
+    width: 99vw;
+    height: 98.5vh;
+    background: #fff;    
+    display: flex;
+    color: #fff;
+    font-size: 100px;
+    font-weight: 600;
+}
+.nav-bar {
+    border-radius: 11px;
+    height: 25%;
+    display: flex;
+    width: 100%;
+    background: linear-gradient(321deg, rgba(25,2,47,1) 0%, rgba(107,34,127,1) 42%, rgba(255,0,252,1) 100%);
+}
+.profile-pic {
+    align-self: center;
+    height: 150px;
+    width: 150px;
+    min-height: 150px;
+    min-width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0px 1.5vw;    
+    object-position:10%;
+}
+.header-content {
+    display: flex;
+    width: 100%;
+}
