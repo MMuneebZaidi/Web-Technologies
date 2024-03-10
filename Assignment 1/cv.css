@@ -1,62 +1,62 @@
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-Thin.ttf') format('ttf');
+    src: url('../assets/fonts/Poppins-Thin.ttf') format('ttf');
     font-weight: 100;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-ExtraLight.ttf') format('ttf');
+    src: url('../assets/fonts/Poppins-ExtraLight.ttf') format('ttf');
     font-weight: 200;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-Light.ttf') format('ttf');
+    src: url('../assets/fonts/Poppins-Light.ttf') format('ttf');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-Regular.ttf') format('ttf');
+    src: url('../assets/fonts/Poppins-Regular.ttf') format('ttf');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-Medium.ttf') format('ttf');
+    src: url('../assets/fonts/Poppins-Medium.ttf') format('ttf');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-SemiBold.ttf') format('ttf');
+    src: url('../assets/fonts/Poppins-SemiBold.ttf') format('ttf');
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-Bold.ttf') format('ttf');
+    src: url('../assets/fonts/Poppins-Bold.ttf') format('ttf');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-ExtraBold.ttf') format('ttf');
+    src: url('../assets/fonts/Poppins-ExtraBold.ttf') format('ttf');
     font-weight: 800;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins-Black.ttf') format('ttf');
+    src: url('../assets/fonts/Poppins-Black.ttf') format('ttf');
     font-weight: 900;
     font-style: normal;
 }
