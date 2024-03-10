@@ -70,15 +70,17 @@ body{
 }
 .container {
     width: 1000px;
-    height: 98.5vh; 
+    height: fit-content; 
     background: #fff;    
     display: flex;
+    flex-direction: column;
     color: #fff;
     font-size: 100px;
     font-weight: 600;
+    border: 1px solid #000;
 }
 .nav-bar {
-    height: 30%;
+    height: 208.33px;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -94,17 +96,277 @@ body{
     border: 5px solid #2dbcad;
     object-fit: cover;
     border-radius: 50%;
-    margin: 0px 1.5vw;    
-    object-position:10%;
+    margin: 0px 2.5vw;    
+    object-position: 0px -30px;
 }
 .header-content {
     display: flex;
     width: 100%;
+    padding-left: 3vw;
     flex-direction: column;
     justify-content: center;
 }
 .name{
-    font-size: 42px;
+    font-size: 38px;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
+    margin: 0px;
+    line-height: 30px;
+}
+.field{
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #2dbcad;
+}
+.description{
+    font-size: 13px;
+    margin: 0px;    
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}
+.contact-dets-panel{
+    height: 108.33px;
+    width: 100%;
+    background-color: #333333;
+    display: flex;
+}
+.contact-col{
+    justify-content: space-evenly;
+    padding-left: 3vw;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+}
+.contact-row{
+    display: flex;
+    width: 80%;
+    height: 33%;
+    align-items: center;
+}
+.contact-icon{
+    height: 15px;
+    width: 15px;
+}
+.contact-info{
+    font-size: 12px;
+    margin: 0px 10px;       
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}
+.details-panel{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+}
+.left-panel{
+    padding: 0px 3vw;
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+.right-panel{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding-right: 2.5vw;
+}
+.education-section,.projects-section , .skills-section , .achievements-section ,.organizations-section ,.languages-section ,.interest-section{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+.header {
+    position: relative;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    width: fit-content;
+    color: #2dbcad;
+    display: inline-block; 
+}
+
+.header::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #2dbcad;
+}
+.edu-dets , .projects-dets , .achievements-dets ,.organizations-dets {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+.degree{
+    font-size: 18px;
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    color: #000;
+}
+
+.school{
+    font-size: 16px;
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #000;
+}
+.date-place{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.place , .duration{
+    font-size: 12px;    
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    color: #2dbcad;
+}
+
+.project-header{
+    font-size: 16px;
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #000;
+}
+
+.projects-dets ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none; 
+    background-color: #ffffff;
+    border-radius: 4px; 
+}
+
+.projects-dets li {
+    font-size: 12px; 
+    font-family: "Poppins", sans-serif;
+    line-height: 1.2; 
+    font-weight: 500;
+    text-align: justify;
+    color: #000;
+}
+
+.projects-dets li::before {
+    content: '• ';
+    color: #2dbcad;
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-block;
+    width: 15px;
+}
+.skills-dets {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    margin-top: 8px;
+    height: fit-content;
+}
+.skill-box{
+    height: 20px;
+    width: fit-content;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    background-color: #8c8c8c;
+    border-radius: 5px;
+}
+
+.achievement {
+    font-size: 14px;    
+    margin: 5px 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #000;
+}
+
+.organizations-title{
+    font-size: 14px;    
+    margin: 10px 0px;
+    margin-bottom: 0px;
+    line-height: 12px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #000;
+}
+
+.organizations-desc{
+    font-size: 12px;    
+    margin: 0px 0px;
+    margin-bottom: 5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #a09d9f;
+}
+
+.languages-dets{
+    margin-bottom: 15px;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+}
+.language-col{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.language-header{
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #000;
+}
+.language-desc{
+    font-size: 13px;    
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    color: #2dbcad;
+}
+
+.interest-dets {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    margin-top: 8px;
+    height: fit-content;
+}
+.interest-box{
+    height: 20px;
+    width: fit-content;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #8c8c8c;
+    border-radius: 5px;
 }
