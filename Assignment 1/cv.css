@@ -1,12 +1,76 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-Thin.ttf') format('ttf');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-ExtraLight.ttf') format('ttf');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-Light.ttf') format('ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-Medium.ttf') format('ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-SemiBold.ttf') format('ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-Bold.ttf') format('ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-ExtraBold.ttf') format('ttf');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-Black.ttf') format('ttf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+
 body{
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin: 5px;
+    margin: 0px;
+    padding: 0px;
 }
 .container {
-    width: 99.5vw;
-    height: 98.5vh;
+    width: 1000px;
+    height: 98.5vh; 
     background: #fff;    
     display: flex;
     color: #fff;
@@ -14,18 +78,20 @@ body{
     font-weight: 600;
 }
 .nav-bar {
-    border-radius: 11px;
-    height: 25%;
+    height: 30%;
     display: flex;
+    align-items: center;
+    justify-content: right;
     width: 100%;
-    background: linear-gradient(321deg, rgba(25,2,47,1) 0%, rgba(107,34,127,1) 42%, rgba(255,0,252,1) 100%);
+    background: #191919;
 }
 .profile-pic {
     align-self: center;
-    height: 150px;
-    width: 150px;
-    min-height: 150px;
-    min-width: 150px;
+    height: 140px;
+    width: 140px;
+    min-height: 140px;
+    min-width: 140px;
+    border: 5px solid #2dbcad;
     object-fit: cover;
     border-radius: 50%;
     margin: 0px 1.5vw;    
@@ -34,4 +100,11 @@ body{
 .header-content {
     display: flex;
     width: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+.name{
+    font-size: 42px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
 }
