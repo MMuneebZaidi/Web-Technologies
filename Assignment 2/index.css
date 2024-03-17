@@ -70,7 +70,7 @@
 
 body{
     scroll-behavior: smooth;
-    transition: all 0.3ms ease;
+    transition: all 0.3s ease;
 }
 
 .my-navbar::before,
@@ -249,6 +249,8 @@ body{
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.3s ease; 
+
 }
 .game-card-csgo{
     margin: 5px;
@@ -264,6 +266,8 @@ body{
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.3s ease; 
+
 }
 .game-card-fortnite{
     margin: 5px;
@@ -279,6 +283,8 @@ body{
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.3s ease; 
+
 }
 .game-card-cod{
     margin: 5px;
@@ -294,6 +300,8 @@ body{
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.3s ease; 
+
 }
 .game-card-apex{
     margin: 5px;
@@ -309,6 +317,8 @@ body{
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.3s ease; 
+
 }
 .game-card-lol{
     margin: 5px;
@@ -324,6 +334,8 @@ body{
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.3s ease; 
+
 }
 .game-card-dota{
     margin: 5px;
@@ -339,6 +351,8 @@ body{
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.3s ease; 
+
 }
 .game-card-pubg{
     margin: 5px;
@@ -354,6 +368,8 @@ body{
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.3s ease; 
+
 }
 .game-card-overwatch{
     margin: 5px;
@@ -369,6 +385,8 @@ body{
     height: 400px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 0.3s ease; 
+
 }
 .game-title{
     font-family: "Poppins", sans-serif;
@@ -381,11 +399,166 @@ body{
     width: 100%;
     padding-top: 8%;
     height: 20%;
+    line-height: 25px;
 }
 .game-card:hover , .game-card-apex:hover ,
  .game-card-csgo:hover , .game-card-lol:hover ,
   .game-card-cod:hover , .game-card-fortnite:hover , 
-    .game-card-dota:hover , .game-card-overwatch:hover , .game-card-pubg:hover {
+   .game-card-dota:hover , .game-card-overwatch:hover , 
+    .game-card-pubg:hover {
     transform: translateY(-10px);
-    transition: all 0.3ms ease; 
+    transition: all 0.3s ease; 
+}
+
+.contact-us{
+    width: 100%;
+    padding-left: 10%;  
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-us-header{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-family: "Poppins", sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    text-align: left;
+}
+
+.contact-us-form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.name-row , .contact-row{
+    display: flex;
+    width: 95%;
+    gap: 25px;
+}
+
+.col1 , .col2 {
+    width: 40%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-label{
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-align: left;
+    width: 100%;
+}
+
+.name-input{
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    background-color: rgb(35, 35, 35);
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    padding-left: 10px;
+}
+
+.message-row{
+    display: flex;
+    width: 95%;
+    flex-direction: column;
+}
+
+.message-textarea{
+    width: 84%;
+    height: 100px;
+    resize: none;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    background-color: rgb(35, 35, 35);
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    padding-left: 10px;
+}
+
+.submit-btn{
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: #fff;
+    color: black;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin: 15px 0px;
+}
+.submit-btn:hover{
+    border: 2px;
+    background-color: #e1e1e1;
+}
+
+.form-error{
+    border: 1px solid red !important;
+    color: red !important;
+}
+.title-input{
+    width: 40%;
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    background-color: rgb(35, 35, 35);
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    padding-left: 10px;
+}
+.content-input{
+    width: 40%;
+    height: 130px;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    background-color: rgb(35, 35, 35);
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    padding-left: 10px;
+    resize: none;
+    margin: 15px 0px;
+}
+.create-btn{
+    background-color: #fff !important;
+    border: 1px solid black !important;
+    color: #000 !important;
+    font-weight: 600 !important;
+}
+.create-btn:hover{
+    background-color: #818181 !important;
+    border: 1px solid black !important;
+    color: #000 !important;
+    font-weight: 600 !important;
+}
+.text-fonts{
+    color: #fff !important;
+    margin: 15px 0px;
+}
+.story-div{
+    padding-left: 15px;
+    width: 40%;
+    height: 200px;
+    border-radius: 8px;
+    border: 1px solid #fff;
 }
