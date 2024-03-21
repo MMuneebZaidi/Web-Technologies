@@ -513,6 +513,18 @@ body{
     border: 1px solid red !important;
     color: red !important;
 }
+
+.form-error:active{
+    border: 1px solid red !important;
+    outline: none !important;
+}
+
+.form-error:focus{
+    border: 1px solid red !important;
+    outline: none !important;
+
+}
+
 .title-input{
     width: 40%;
     height: 50px;
