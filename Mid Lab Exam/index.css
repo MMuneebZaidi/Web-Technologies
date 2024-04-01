@@ -1,0 +1,232 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;   
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 140px;
+    background-color: #0e4f97;
+}
+.nav-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 75%;
+    border-bottom: 0.1px solid #fff;
+}
+.nav-bot{
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.nav-top-col1{
+    height: 100%;
+    width: 30%;
+}
+
+.nav-left-box{
+    height: 100%;
+    background-color: #e9ff4e;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.nav-top-col2{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+}
+.nav-top-col3{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-logo{
+    position: relative;
+    top: 20px;
+    height: 40px;
+    width: auto;    
+    z-index: 1;
+}
+.main-logo-bot-text{
+    width: auto;
+    padding: 4px 8px 5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 16px;
+    color: #fff;
+    background-color: #cc2729;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.5);
+    z-index: 2;
+}
+.js-text{
+    position: absolute;
+    width: auto;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 16px;
+    color: #fff;
+    z-index: 2;
+    top: 70px;  
+}
+.nav-top-right-col1{
+    width: 90%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 20px;
+    
+}
+.get-daily-ed-btn{
+    width: 45%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 0.5px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+.sign-in-btn{
+    width: 20%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    color: #0e4f97;
+    font-weight: 500;
+    border: 0.5px solid #e9ff4e;
+    background-color: #e9ff4e;
+    cursor: pointer;
+}
+.nav-top-right-col2{
+    height: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 35px;
+    justify-content: flex-end;
+    margin-right: -130px;
+    gap: 5px;
+}
+.divider{
+    height: 15px;
+    width: 1px;
+    background-color: #fff;
+}
+.lang{
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointers;
+}
+.nav-bot-text{
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+.join-com{
+    font-size: 18px;
+    color: #0e4f97;
+    font-weight: 600;
+    text-align: center;
+    margin: 3px 0px;
+}
+.join-com-bot{
+    font-size: 16px;
+    color: #0e4f97;
+    font-weight: 500;
+    text-align: center;
+    margin: 5px 0px;
+}
+
+.learn-more-btn{
+    border: 1px solid #0e4f97;
+    border-radius: 25px;
+    background-color: #0e4f97;
+    padding: 8px 10px;
+    color: #fff;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.main-container{
+    width: 100%;
+    margin-top: 180px;
+    height: fit-content;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.divider-body{
+    width: 70%;
+    height: 1px;
+    background-color: black;
+}
+.news-1{
+    margin-top: 30px;
+    width: 70%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+.news-1-r1{
+    width: 100%;
+    height: 70%;
+    display: flex;
+}
+.news-1-r1-c1{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.live-update{
+    display: flex;
+}
+.live-update span{
+    font-size: 12px;
+    color: #cc2729;
+    font-weight: 500;
+}
+.live-update p{
+    margin: 0px;
+    margin-left: 10px;
+    padding: 0px;
+    font-size: 12px;
+}
+.news-1-r1-c2{
+    width: 40%;
+    height: 100%;
+    display: flex;
+}
+.news-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.news-1-r2{
+    width: 100%;
+    display: flex;
+}
+.news-title{
+    width: 80%;
+    font-size: 40px;
+}
