@@ -34,6 +34,7 @@ router.post("/register", async (req, res) => {
         userId: user.id,
         name: user.name,
         email: user.email,
+        leads : 0
     }
 
     let companyData = {

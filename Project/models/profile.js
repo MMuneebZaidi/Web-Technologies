@@ -12,5 +12,6 @@ let profileSchema = mongoose.Schema({
     companyId: String,
     leads: String,
 });
+
 let Profile = mongoose.model("Profile", profileSchema);
 module.exports = Profile;

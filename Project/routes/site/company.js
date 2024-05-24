@@ -12,21 +12,23 @@ router.get("/company", (req, res) => {
 
 
 router.patch("/company/:id", async (req, res) => {
+    try {
+        let company = await Company.findOne({ id: req.params.id });
 
-    let company = await Company.findOne({id: req.params.id});
-    if(!company){
-        res.flash("danger", "Profile doesnt exist");
+        if (!company) {
+            req.flash("danger", "Company doesn't exist");
+            return res.status(404).send("Company doesn't exist");
+        }
+
+        Object.assign(company, req.body);
+
+        await company.save();
+
+        return res.send(company);
+    } catch (error) {
+        console.error("Error updating company:", error);
+        return res.status(500).send("Internal server error");
     }
-
-    company.name = req.body.name;
-    company.phone = req.body.phone;
-    company.instagram = req.body.instagram;
-    company.linkedIn = req.body.linkedIn;
-    company.twitter = req.body.twitter;
-    company.industry = req.body.industry;
-
-    await company.save();
-    return res.send(company);
 });
 
 router.delete("/company/:id", async (req, res) => {
