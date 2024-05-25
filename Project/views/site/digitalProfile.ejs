@@ -1,0 +1,244 @@
+
+<% if (!user?.is_blocked) { %>
+    <% if (connection) { %>
+        <%- include('ConnectedPop') %>
+        <div class="overlay-layout"></div>
+    <% } %>
+
+    <div class="digital-profile-banner-div" onclick="<%= openCollection || popUp || showBottomSlide || showCompanyBottomSlide || showAboutUsBottomSlide || showAddressBottomSlide ? 'closeAll()' : '' %>">
+        <img
+                src="<%= user?.cover_url ? ProfileImages.cover : coverPlaceholder %>"
+                alt="Banner img"
+                class="<%= open ? 'banner-img blur' : 'digital-profile-banner-img' %>"
+                onload="onCoverPicLoad()"
+                style="cursor:default"
+        />
+        <% if (ProfileImages?.cover?.includes('youtube') || ProfileImages?.cover?.includes('youtu.be')) { %>
+            <div style="cursor: pointer" onclick="window.open(user?.cover_url, '_blank')" class="youtube-play-button">
+                <%- include('YouTubePlayButton') %>
+            </div>
+        <% } %>
+    </div>
+
+    <div class="digital-profile-screen" onclick="<%= openCollection || popUp || showBottomSlide || showCompanyBottomSlide || showAboutUsBottomSlide || showAddressBottomSlide ? 'closeAll()' : '' %>" style="background-color: <%= theme.secondaryColor %>">
+        <div class="<%= open ? 'container' : 'container' %>">
+            <div class="digital-profile-name-info">
+                <div class="digital-profile-img-and-name">
+                    <% if (user?.image_url) { %>
+                        <img
+                                class="profile-pic-digital-profile"
+                                src="<%= ProfileImages.pic %>"
+                                alt="Profile Image"
+                                style="background-color: white"
+                                onload="onProfilePicLoad()"
+                        />
+                    <% } %>
+                    <% if (company?.logo_url) { %>
+                        <img
+                                class="company-pic-digital-profile"
+                                src="<%= ProfileImages.companyLogo %>"
+                                alt="Profile Image"
+                                style="background-color: white"
+                                onload="onProfilePicLoad()"
+                        />
+                    <% } %>
+                    <div class="digital-profile-name-info">
+                        <h1 class="name" style="color: <%= theme.primaryTextColor %>">
+                            <%= user?.name == '' || user?.name == 'null' ? '' : user?.name %>
+                        </h1>
+                        <h2 class="profession" style="color: <%= theme.primaryTextColor %>">
+                            <%= user?.job_title == '' || user?.job_title == 'null' ? '' : user?.job_title %>
+                        </h2>
+                        <% if (user?.mobile_no && user?.mobile_no != 'null') { %>
+                            <a href="tel:<%= user?.mobile_no.replace(/[^\d+]/g, '') %>" style="color: <%= theme.primaryTextColor %>; text-decoration: none" class="contact-info-fields">
+                                <%- include('PhoneIcon', { theme }) %>
+                                <%= user?.mobile_no %>
+                            </a>
+                        <% } %>
+                        <a href="mailto:<%= user?.email %>" style="color: <%= theme.primaryTextColor %>; text-decoration: none" class="contact-info-fields">
+                            <%- include('EmailIcon', { theme }) %>
+                            <%= user?.email %>
+                        </a>
+                    </div>
+                    <div class="digital-profile-connect-btn-container">
+                        <button class="digital-profile-connect-btn" onclick="handleNetworkButton()">
+                            Connect
+                        </button>
+                        <div class="digital-profile-connect-icon" onclick="toggleConnect()">
+                            <% if (connectLoader) { %>
+                                <% if (connect) { %>
+                                    <p>Contact Saved</p>
+                                <% } else { %>
+                                    <%- include('ConnectLoad') %>
+                                <% } %>
+                            <% } else { %>
+                                <%- include('Connect', {
+                                id: user?.id,
+                                userfullName: user?.name || '',
+                                userEmail: user?.email || '',
+                                userNumber: user?.mobile_no ? user.mobile_no.replace(/[^\d+]/g, '') : '',
+                                companyAdress: company?.address || '',
+                                profilePic: user?.image_url || '',
+                                companyName: company?.name || '',
+                                userJobTitle: user?.job_title || ''
+                                }) %>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-media-icons-container">
+                <% if (whatsappData && whatsappData != 'null') { %>
+                    <a href="https://wa.me/<%= whatsappData %>" target="blank" class="anchor">
+                        <div class="single-icon-container">
+                            <%- include('Whatsapp') %>
+                        </div>
+                    </a>
+                <% } %>
+                <% if (linkedinData && linkedinData != 'null') { %>
+                    <a href="<%= linkedinData %>" target="blank" class="anchor">
+                        <div class="single-icon-container">
+                            <%- include('Linkedin') %>
+                        </div>
+                    </a>
+                <% } %>
+                <% if (instagramData && instagramData != 'null') { %>
+                    <a href="<%= instagramData %>" target="blank" class="anchor">
+                        <div class="single-icon-container">
+                            <%- include('Instagram') %>
+                        </div>
+                    </a>
+                <% } %>
+                <% if (twitterData && twitterData != 'null') { %>
+                    <a href="<%= twitterData %>" target="blank" class="anchor">
+                        <div class="single-icon-container">
+                            <%- include('Twitter') %>
+                        </div>
+                    </a>
+                <% } %>
+                <% if (company?.email && company?.email != 'null') { %>
+                    <a href="mailto:<%= company?.email %>" target="blank" class="anchor">
+                        <div class="single-icon-container">
+                            <%- include('Gmail') %>
+                        </div>
+                    </a>
+                <% } %>
+            </div>
+
+            <div class="digital-profile-contact-container">
+                <%- include('QuickActionBox', {
+                setShowBottomSlide: setShowCompanyBottomSlide,
+                theme: theme,
+                companyData: company
+                }) %>
+                <% if (user?.meeting_url && user.meeting_url != 'null') { %>
+                    <%- include('MeetingBox', {
+                    theme: theme,
+                    userData: user
+                    }) %>
+                <% } %>
+            </div>
+
+            <% if (portfolioVisible) { %>
+                <p class="portfolio-text-heading">Portfolio</p>
+            <% } %>
+            <div class="project-card-container">
+                <% Projects.forEach(project => { %>
+                    <% if (project.status && project.is_locked) { %>
+                        <%- include('LivePreviewSingleCollection', {
+                        id: project.id,
+                        collection: project,
+                        setOpenCollection: setOpenCollection,
+                        setSelectedPoject: setSelectedPoject
+                        }) %>
+                    <% } %>
+                <% }) %>
+                <% Projects.forEach(project => { %>
+                    <% if (project.status && project.profile_status && !project.is_locked) { %>
+                        <%- include('LivePreviewSingleCollection', {
+                        id: project.id,
+                        collection: project,
+                        setOpenCollection: setOpenCollection,
+                        setSelectedPoject: setSelectedPoject
+                        }) %>
+                    <% } %>
+                <% }) %>
+            </div>
+
+            <% if (showImage) { %>
+                <div class="overlay-layout display-image-container">
+                    <%- include('Carousel', {
+                    setShowImage: setShowImage,
+                    images: responseImages,
+                    selectedItem: index,
+                    mobile: false,
+                    loader: loader,
+                    downloadImage: downloadImage
+                    }) %>
+                </div>
+            <% } %>
+
+            <% if (responseImages && responseImages.length > 0) { %>
+                <p class="portfolio-text-heading">Photo gallery</p>
+            <% } %>
+
+            <% if (responseImages && responseImages.length > 4) { %>
+                <div class="phone-gallery-container preview-phone-gallery-container">
+                    <%- include('GallerySlick', {
+                    openImage: openImage,
+                    images: responseImages
+                    }) %>
+                </div>
+            <% } else { %>
+                <div class="phone-gallery-container preview-phone-gallery-container">
+                    <div class="image-slider-container gallery-slick-flex-digital">
+                        <% responseImages.forEach((image, index) => { %>
+                            <div class="image-container" onclick="openImage(<%= index %>)">
+                                <img src="<%= image.image_url %>" alt="Image <%= index + 1 %>" class="cover-image" />
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        <%- include('NetworkPopUp', {
+        handleCancleButton: handleCancleButton,
+        pop: popUp,
+        popUp: setPopUp,
+        open: setOpen,
+        profileId: profileId,
+        userType: 'profile',
+        setConnection: setConnection
+        }) %>
+    </div>
+
+    <% if (viewProjectId !== 0) { %>
+        <div class="digital-profile-display-projects"></div>
+        <div class="digital-profile-display-projects-content">
+            <div>
+                <h2 style="margin: 0 auto; height: 5vh; font-size: 2.5vh;">Our Projects</h2>
+                <button onclick="setViewProjectId(0)" class="project-display-close-button">
+                    <%- include('Close') %>
+                </button>
+            </div>
+            <div class="digital-profile-projects-card-container">
+                <div style="overflow-y: scroll; width: 100%; scrollbar-width: none; display: flex; flex-direction: column; align-content: center; align-items: center;"></div>
+            </div>
+        </div>
+    <% } %>
+
+    <% if (selectedPoject) { %>
+        <%- include('PortfolioDetailBottomComponent', {
+        className: `portfolio-slide-component ${openCollection ? 'slide-in' : 'slide-out'}`,
+        setOpenCollection: setOpenCollection,
+        openCollection: openCollection,
+        project: selectedPoject,
+        setSelectedPoject: setSelectedPoject
+        }) %>
+    <% } %>
+<% } else { %>
+    <div class="blocked-item-container">
+        Profile Blocked
+    </div>
+<% } %>

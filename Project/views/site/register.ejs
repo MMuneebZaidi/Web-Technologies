@@ -1,0 +1,79 @@
+<div class="new-login-main-container">
+    <div id="alert" class="reset-confirm" style="display: none;">
+        <div id="alert-message"></div>
+    </div>
+    <div class="login-right-image"></div>
+    <div class="login-left-image"></div>
+
+    <div class="new-login-form-container">
+        <form id="form-page-form" action="http://localhost:4000/register" method="post">
+            <h2>Get Started</h2>
+            <p>
+                Begin crafting your Nebe digital business profile in two steps. First off, let's kickstart with your name and email.
+            </p>
+
+            <div class="input-container">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                        <path d="M12.8973 12.7975C15.6483 12.7975 17.8785 10.5673 17.8785 7.81621C17.8785 5.06514 15.6483 2.83496 12.8973 2.83496C10.1462 2.83496 7.91602 5.06514 7.91602 7.81621C7.91602 10.5673 10.1462 12.7975 12.8973 12.7975Z" strokeWidth="1.49438" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M21.4554 22.7609C21.4554 18.9054 17.6199 15.7871 12.8976 15.7871C8.1754 15.7871 4.33984 18.9054 4.33984 22.7609" strokeWidth="1.49438" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                </div>
+                <input
+                        required
+                        type="text"
+                        name="name"
+                        placeholder="Full name"
+                        autocomplete="name"
+                />
+            </div>
+
+            <div class="input-container" style="<%= emailError ? 'border-color: red;' : '' %>">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                        <path d="M17.88 21.3747H7.91753C4.92878 21.3747 2.93628 19.8804 2.93628 16.3935L2.93628 9.41973C2.93628 5.93285 4.92878 4.43848 7.91753 4.43848H17.88C20.8688 4.43848 22.8613 5.93285 22.8613 9.41973V16.3935C22.8613 19.8804 20.8688 21.3747 17.88 21.3747Z" stroke-width="1.49438" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17.8805 9.91797L14.7622 12.4086C13.7361 13.2255 12.0524 13.2255 11.0263 12.4086L7.91797 9.91797" strokeWidth="1.49438" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                </div>
+                <input
+                        required
+                        type="email"
+                        name="email"
+                        placeholder="Email address"
+                        autocomplete="email"
+                />
+            </div>
+
+                <div class="input-container">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15.6221 14.5319C19.0991 14.5319 21.9177 11.7248 21.9177 8.26203C21.9177 4.79929 19.0991 1.99219 15.6221 1.99219C12.1452 1.99219 9.32657 4.79929 9.32657 8.26203C9.32657 9.86593 10.0586 11.0325 10.0586 11.0325L2.44538 18.6145C2.10376 18.9547 1.62549 19.8393 2.44538 20.6558L3.32383 21.5307C3.66543 21.8223 4.52434 22.2306 5.2271 21.5307L6.25195 20.5101C7.27682 21.5307 8.44808 20.9475 8.8873 20.3642C9.61935 19.3436 8.74089 18.3229 8.74089 18.3229L9.03371 18.0313C10.4392 19.431 11.6691 18.6145 12.1083 18.0313C12.8403 17.0107 12.1083 15.99 12.1083 15.99C11.8155 15.4067 11.2299 15.4067 11.9618 14.6777L12.8403 13.8028C13.5431 14.386 14.9877 14.5319 15.6221 14.5319Z" strokeWidth="1.49" strokeLinejoin="round"/>
+                            <path d="M17.818 8.26235C17.818 9.47029 16.8348 10.4495 15.6219 10.4495C14.4091 10.4495 13.4258 9.47029 13.4258 8.26235C13.4258 7.05442 14.4091 6.0752 15.6219 6.0752C16.8348 6.0752 17.818 7.05442 17.818 8.26235Z" strokeWidth="1.49"/>
+                        </svg>
+                    </div>
+                    <input
+                            required
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            style="width: 75%;"
+                            autocomplete="new-password"
+                    />
+
+                </div>
+
+            <div class="login-form-checkbox-container">
+                <div>
+                    <input required style="cursor: pointer;" type="checkbox" name="privacypolicy" onchange="handleInputChange(event)" />
+                    <p>I accept the &nbsp;<b><a href="/privacy-policy"><b><u>privacy policy</u></b></a></b></p>
+                </div>
+            </div>
+            <button class="continue-button" type="submit">
+                Continue
+            </button>
+            <p>Already have an account? <a href="/login"><b>Login</b></a></p>
+        </form>
+
+    </div>
+</div>
+<script src="JS/register.js"></script>

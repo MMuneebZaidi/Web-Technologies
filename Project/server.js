@@ -6,14 +6,22 @@ const session = require("express-session");
 // const isAuthenticated = require("./middlewares/isAuthenticated");
 let server = express();
 server.use(express.json());
-server.use(express.urlencoded( { extended: true }));
+
 
 server.use(cookieParser());
-server.use(session({ secret: "Its a secret" }));
+// Set up session middleware
+server.use(session({
+    secret: 'yourSecretKey',
+    resave: false,
+    saveUninitialized: true
+}));
+
+server.use(express.urlencoded( { extended: true }));
+server.use(require("./middleware/flashmiddleware"));
 server.set("view engine", "ejs");
 server.use(express.static("public"));
-// var expressLayouts = require("express-ejs-layouts");
-// server.use(expressLayouts);
+var expressLayouts = require("express-ejs-layouts");
+server.use(expressLayouts);
 // server.use(require("./middlewares/siteMiddleware"));
 // let mobileApiRouter = require("./routes/api/mobiles");
 
@@ -27,7 +35,10 @@ server.use("/", require("./routes/site/profile"));
 //     res.render("contact-us");
 // });
 server.get("/", (req, res) => {
-    // res.render("homepage");
+    const page = 'home';
+    const hamburger = true;
+    const isMobile = false;
+    res.render("site/homepage",{page, hamburger, isMobile});
 });
 
 //mongoose accepts a connection string to your db and attempts a connections here

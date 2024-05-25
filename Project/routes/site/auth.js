@@ -5,10 +5,22 @@ let router = express.Router();
 let User = require("../../models/user");
 let Profile = require("../../models/profile");
 let Company = require("../../models/company");
+let Contact = require("../../models/contacts");
 
 
 router.get("/register", (req, res) => {
-    res.render("auth/register");
+    res.render('site/register', {
+        page: 'register',
+        isMobile: false,
+        hamburger: false,
+        emailError: '',
+        errorMessage: '',
+        showPassword: false,
+        otpOption: true,
+        loader: false
+
+    });
+
 });
 
 router.post("/register", async (req, res) => {
@@ -17,6 +29,27 @@ router.post("/register", async (req, res) => {
 
     if (user) {
         res.flash("danger", "User with this email already exist");
+        return res.redirect("/register");
+    }
+
+    const validatePassword = (password) => {
+        if (password.length < 8) {
+            return "Password must be at least 8 characters long.";
+        }
+        if (!/[A-Z]/.test(password)) {
+            return "Password must contain at least one uppercase letter.";
+        }
+        if (!/\d/.test(password)) {
+            return "Password must contain at least one number.";
+        }
+        if (!/[^A-Za-z0-9]/.test(password)) {
+            return "Password must contain at least one special character.";
+        }
+        return null;
+    };
+
+    if(validatePassword(req.body.password)){
+        res.flash("danger", validatePassword(req.body.password));
         return res.redirect("/register");
     }
 
@@ -53,7 +86,7 @@ router.post("/register", async (req, res) => {
     let company = await Company(companyData);
     await company.save();
 
-    // res.render("/login");
+    res.render("/login");
 });
 
 router.get("/logout", (req, res) => {
@@ -63,14 +96,24 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-    res.render("auth/login");
+    res.render('site/login', {
+        page: 'login',
+        isMobile: false,
+        hamburger: false,
+        emailError: '',
+        errorMessage: '',
+        showPassword: false,
+        otpOption: true,
+        loader: false
+    });
 });
+
 
 router.post("/login", async (req, res) => {
     let user = await User.findOne({ email: req.body.email });
     if (!user) {
-        res.flash("danger", "User with given email already exist");
-        // return res.redirect("/register");
+        res.flash("danger", "User with given email doesn't exist");
+        return res.redirect("/register");
     }
     const match = await bcrypt.compare(req.body.password, user.password);
 
@@ -80,8 +123,22 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.user = user;
-    // res.flash("success", user.name + " Logged In");
-    // return res.redirect("/");
+    res.flash("success", user.name + " Logged In");
+    return res.redirect("/");
+});
+
+router.get("/contacts", async (req, res) => {
+    let contacts = await Contact.find();
+    return res.send(contacts);
+});
+
+router.post("/contacts", async (req, res) => {
+    let contactData= req.body;
+    contactData.id = uuid();
+    let contact = await Contact(contactData);
+    await contact.save();
+    res.flash("danger", "Form submitted successfully");
+    return res.redirect("/");
 });
 
 module.exports = router;

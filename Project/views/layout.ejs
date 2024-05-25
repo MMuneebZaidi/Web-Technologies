@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="CSS/homepage.css">
+        <link rel="stylesheet" href="CSS/navbar.css">
+        <link rel="stylesheet" href="CSS/register.css">
+        <script src="JS/navbar.js" defer></script>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <% if (page == 'register' || page == 'login' || page == 'home') { %>
+            <%- include('./layouts/partials/navbar.ejs', { page: page }) %>
+        <% } %>
+
+        <%-body %>
+
+        <% if (flash) { %>
+            <div class="alert-danger">
+                <%= flash.message %>
+            </div>
+        <% } %>
+        <script>
+            setTimeout(function() {
+                var alert = document.querySelector('.alert-danger');
+                if (alert) {
+                    alert.classList.add('fade');
+                    setTimeout(function() {
+                        if (alert.parentNode) {
+                            alert.parentNode.removeChild(alert);
+                        }
+                    }, 500);
+                }
+            }, 2000);
+        </script>
+    </body>
+</html>
