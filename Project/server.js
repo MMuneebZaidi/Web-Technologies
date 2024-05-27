@@ -31,17 +31,19 @@ server.use(require("./middleware/flashmiddleware"));
 var expressLayouts = require("express-ejs-layouts");
 server.use(expressLayouts);
 
-server.use("/", require("./routes/site/auth"));
-server.use("/", require("./routes/site/company"));
-server.use("/", require("./routes/site/profile"));
-server.use("/", require("./routes/api/crew"));
-
 server.get("/", (req, res) => {
     const page = 'home';
     const hamburger = true;
     const isMobile = false;
     res.render("site/homepage",{page, hamburger, isMobile});
 });
+
+server.use("/", require("./routes/site/auth"));
+server.use("/", require("./routes/site/company"));
+server.use("/", require("./routes/site/profile"));
+server.use("/", require("./routes/api/crew"));
+
+
 
 server.listen(process.env.PORT, () => {
     console.log("Server started at localhost:4000");

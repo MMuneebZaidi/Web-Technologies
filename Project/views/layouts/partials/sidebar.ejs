@@ -9,7 +9,7 @@
         </a>
     </div>
     <div class="lower">
-        <button class="logout">
+        <button onclick="logout()" class="logout">
             Logout
         </button>
         <div class="user-info">
@@ -24,4 +24,20 @@
             </div>
         </div>
     </div>
+    <script>
+        function logout() {
+            $.ajax({
+                url: `http://localhost:4000/logout`,
+                type: 'POST',
+                contentType: 'application/json',
+                success: function(result) {
+                    window.location.href = '/login';
+                    console.log('Success:', result);
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+    </script>
 </div>

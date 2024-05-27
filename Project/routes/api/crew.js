@@ -25,7 +25,7 @@ router.get("/crew/add-member", async (req, res) => {
         username: "",
         address: ""
     }
-    res.render("site/profile", {page: 'crew',profile: profile, profileData: req.session.profileData, edit: false});
+    res.render("site/addProfile", {page: 'crew',profile: profile, profileData: req.session.profileData, edit: false});
 });
 
 router.get("/crew/:page?", async (req, res) => {
@@ -72,7 +72,6 @@ router.get("/crew/profile/:id", async (req, res) => {
         res.flash("danger", "Profile doesnt exist");
     }
 
-    console.log(profileData);
     let company = await Company.findOne({id: profileData.companyId});
 
     if (!company) {

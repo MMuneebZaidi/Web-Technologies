@@ -8,6 +8,8 @@ var path = require('path');
 const multer = require("multer");
 const generateUsername = require("../../helpers/usernameGenerator");
 const checkSessionAuth = require("../../middleware/sessionauth");
+const User = require("../../models/user");
+const bcrypt = require("bcrypt");
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -93,7 +95,7 @@ router.get("/profile", async (req, res) => {
     res.render("site/profile", {page: 'profile', profile: profile , profileData: req.session.profileData , edit: true});
 });
 
-router.post("/profile", async (req, res) => {
+router.post("/profile", upload ,async (req, res) => {
 
     let profile = await Profile.findOne({ email: req.body.email });
 
@@ -102,25 +104,39 @@ router.post("/profile", async (req, res) => {
         return res.redirect("/profile");
     }
 
-    console.log("Profile data:", req.body);
 
     const username = generateUsername(req.body.name);
 
-    let company = await Company.findOne({ id: req.body.companyId });
+    let company = await Company.findOne({ id: req.session.profileData.companyId });
 
     if (company) {
+        let id = uuid();
         let profileData = {
-            id: uuid(),
-            userId: profile.id,
+            id: id,
+            userId: id,
             name: req.body.name,
             email: req.body.email,
             companyId: company.id,
             username: username,
         }
 
-        Object.assign(profile, req.body);
 
-        if(req.files.image[0]) {
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash('Default', saltRounds);
+
+        let userData= {
+            id: profileData.id,
+            name: req.body.name,
+            email: req.body.email,
+            password: hashedPassword,
+        };
+
+        user = new User(userData);
+        await user.save();
+
+        Object.assign(profileData, req.body);
+
+        if(req.files.image) {
             let image = req.files.image[0];
             let imageName = image.filename;
             profileData.image = {
@@ -128,7 +144,7 @@ router.post("/profile", async (req, res) => {
                 contentType: 'image/png'
             };
         }
-        if(req.files.cover[0]) {
+        if(req.files.cover) {
             let cover = req.files.cover[0];
             let coverName = cover.filename;
             profileData.cover = {
@@ -138,10 +154,11 @@ router.post("/profile", async (req, res) => {
         }
 
         let profile = await Profile(profileData);
+
         await profile.save();
     }
 
-    return res.redirect("/profile");
+    return res.redirect("/crew");
 });
 
 router.post("/profile/:id",upload, async (req, res) => {
@@ -189,12 +206,23 @@ router.post("/profile/:id",upload, async (req, res) => {
 });
 
 router.delete("/profile/:id", async (req, res) => {
-    let profile = await Profile.findOne({id: req.params.id});
-    if(!profile){
-        res.flash("danger", "Profile doesnt exist");
+    try {
+        let profile = await Profile.findOne({ id: req.params.id });
+        if (!profile) {
+            req.flash("danger", "Profile doesn't exist");
+            return res.redirect("/crew");
+        }
+        await User.deleteOne({id: profile.userId});
+        await Profile.deleteOne({ id: req.params.id });
+        return res.send({
+            message : 'deleted'
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server Error");
     }
-    await profile.delete();
-    return res.send(profile);
 });
+
+
 
 module.exports = router;

@@ -1,7 +1,7 @@
 
 function generateUsername(fullName) {
     function getFirstName(name) {
-        return name.split(' ')[0].toLowerCase();
+        return name.    split(' ')[0].toLowerCase();
     }
 
     function generateRandomString(length) {

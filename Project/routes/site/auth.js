@@ -103,15 +103,8 @@ router.post("/register", async (req, res) => {
     });
 });
 
-router.get("/logout", (req, res) => {
-    req.session.user = null;
-    req.session.profile = null;
-    res.flash("success", "Logged out Successfully");
-    res.redirect("/login");
-});
-
 router.get("/login", (req, res) => {
-    res.render('site/login', {
+    return res.render('site/login', {
         page: 'login',
         isMobile: false,
         hamburger: false,
@@ -158,6 +151,14 @@ router.post("/contacts", async (req, res) => {
     await contact.save();
     res.flash("danger", "Form submitted successfully");
     return res.redirect("/");
+});
+
+router.post("/logout", (req, res) => {
+    req.session.user = null;
+    req.session.profileData = null;
+    console.log("Logged out");
+    res.flash("success", "Logged out Successfully");
+    return res.redirect("/login");
 });
 
 module.exports = router;
