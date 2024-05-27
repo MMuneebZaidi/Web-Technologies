@@ -1,0 +1,56 @@
+<div class="main-crew-box">
+    <div class="row-1">
+        <h1>Crew (<%= crew.total %>)</h1>
+        <div class="btn-div">
+            <a href="/crew/add-member" type="submit" class="update-btn">Add Member</a>
+        </div>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job Title</th>
+            <th>Phone</th>
+            <th>Leads</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% crew.members.forEach(item => { %>
+            <tr onclick="window.location.href='/crew/profile/<%= item.id %>'">
+                <td>
+                    <img
+                            src="<%= item.image && item.image.data ? 'data:image/' + item.image.contentType + ';base64,' + item.image.data.toString('base64') : '/assets/picPlaceholder.png' %>"
+                            alt="user-image">
+                    <%= item.name %>
+                </td>
+                <td><%= item.email %></td>
+                <td><%= item.jobTitle %></td>
+                <td><%= item.phone ?? "(empty)" %></td>
+                <td><%= item.leads ?? 0 %></td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <a href="/crew/1" class="page-link">First</a>
+
+        <% if(crew.page !== crew.totalPages) { %>
+            <a href="/crew/<%= crew.page-1%>" tabindex="-1" class="page-link"><</a>
+        <% } else { %>
+            <a  style="opacity: 0.5; cursor: not-allowed " class="page-link"><</a>
+        <% } %>
+        <% for(let index = 0; index < (crew.totalPages < 3 ? crew.totalPages : 3); index++) { %>
+            <a class="page-link" href="/<%= index+1 %>"><%= index+1 %></a>
+        <% } %>
+
+        <% if(crew.page !== crew.totalPages) { %>
+            <a href="/crew/<%= crew.page+1 %>" class="page-link" style="opacity: <%= crew.page === crew.totalPages ? '0.5' : 1 %>">></a>
+        <% } else { %>
+            <a  style="opacity: 0.5; cursor: not-allowed " class="page-link">></a>
+        <% } %>
+        <a href="/crew/<%= crew.total %>" class="page-link">Last</a>
+
+    </div>
+</div>

@@ -1,0 +1,115 @@
+<div class="main-box">
+    <form method="POST" action="http://localhost:4000/profile" enctype="multipart/form-data">
+        <div class="row-1">
+            <h1>Profile Information</h1>
+            <div class="btn-div">
+                <button type="submit" class="update-btn">Save</button>
+            </div>
+        </div>
+
+        <input id="imageInput" onchange="imageChange()" type="file" name="image" accept="image/*" style="display: none;" />
+        <input id="coverInput" onchange="coverChange()" type="file" name="cover" accept="image/*" style="display: none;" />
+
+        <div class="row-images">
+            <div class="image-box">
+                <h1>Profile</h1>
+                <img id="pfp" class="pic" onclick="triggerImageInput()" src="/assets/picPlaceholder.png"
+                     alt="profile image" />
+            </div>
+            <div class="image-box">
+                <h1>Cover</h1>
+                <img id="cvr" class="cover" onclick="triggerCoverInput()" src="/assets/coverPlaceolder.png"
+                     alt="cover image" />
+            </div>
+        </div>
+        <script>
+            function triggerImageInput() {
+                document.getElementById('imageInput').click();
+            }
+
+            function triggerCoverInput() {
+                document.getElementById('coverInput').click();
+            }
+
+            function imageChange() {
+                const file = document.getElementById('imageInput').files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.querySelector('.pic').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+
+            function coverChange() {
+                const file = document.getElementById('coverInput').files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.querySelector('.cover').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+
+            function deleteProfile() {
+                $.ajax({
+                    url: `http://localhost:4000/profile/delete/<%= profile.id %>`,
+                    type: 'DELETE',
+                    contentType: 'application/json',
+                    success: function(result) {
+                        console.log('Success:', result);
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                    }
+                });
+            }
+        </script>
+        <div class="row-input">
+            <div class="col-input">
+                <label for="name">Name</label>
+                <input placeholder="Enter Name" type="text" id="name" name="name" />
+            </div>
+            <div class="col-input">
+                <label for="jobTitle">Job Title</label>
+                <input placeholder="Enter Job Title" type="text" id="jobTitle" name="jobTitle" required/>
+            </div>
+
+        </div>
+        <div class="row-input">
+            <div class="col-input">
+                <label for="email">Email</label>
+                <input
+                        placeholder="Enter Email"
+                        type="text"
+                        id="email"
+                        name="email"
+                        style="cursor: text "
+                        required
+                />
+            </div>
+            <div class="col-input">
+                <label for="phone">Phone Number</label>
+                <input placeholder="Enter Phone" type="text" id="phone" name="phone"  required />
+            </div>
+        </div>
+        <div class="row-input">
+            <div class="col-input">
+                <label for="address">Address</label>
+                <input placeholder="Enter Address" type="text" id="address" name="address"  />
+            </div>
+            <div class="col-input">
+                <label for="twitter">Twitter</label>
+                <input placeholder="Enter Twitter" type="text" id="twitter" name="twitter" />
+            </div>
+        </div>
+        <div class="row-input">
+            <div class="col-input">
+                <label for="instagram">Instagram</label>
+                <input placeholder="Enter Instagram" type="text" id="instagram" name="instagram"  />
+            </div>
+            <div class="col-input">
+                <label for="linkedIn">LinkedIn</label>
+                <input placeholder="Enter LinkedIn" type="text" id="linkedIn" name="linkedIn"  />
+            </div>
+        </div>
+    </form>
+</div>

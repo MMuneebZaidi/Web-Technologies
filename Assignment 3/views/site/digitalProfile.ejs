@@ -1,0 +1,122 @@
+
+<div class="digital-profile-banner-div" >
+    <% if (profile.cover && profile.cover.data) { %>
+    <img
+            src="data:image/<%=profile.cover.contentType%>;base64,<%=profile.cover.data.toString('base64')%>"
+            alt="Banner img"
+            class="digital-profile-banner-img"
+    />
+    <% } else { %>
+        <img
+                src="/assets/coverPlaceolder.png"
+                alt="Banner img"
+                class="digital-profile-banner-img"
+        />
+    <% } %>
+</div>
+
+<div class="digital-profile-screen">
+    <div class="container">
+        <div class="digital-profile-name-info">
+            <div class="digital-profile-img-and-name">
+                <% if (profile.image && profile.image.data) { %>
+                    <img
+                            class="profile-pic-digital-profile"
+                            src="data:image/<%=profile.image.contentType%>;base64,<%=profile.image.data.toString('base64')%>"
+                            alt="Profile Image"
+                            style="background-color: white"
+                    />
+                <% } %>
+                <% if (profile?.company?.logo) { %>
+                    <img
+                            class="company-pic-digital-profile"
+                            src="data:image/<%=profile?.company?.logo.contentType%>;base64,
+                    <%=profile?.company?.logo.data.toString('base64')%>"
+                            alt="Profile Image"
+                            style="background-color: white"
+                    />
+                <% } %>
+                <div class="digital-profile-name-info">
+                    <h1 class="name">
+                        <%= profile?.name === '' || profile?.name === 'null' ? '' : profile?.name %>
+                    </h1>
+                    <h2 class="profession" >
+                        <%= profile?.jobTitle === '' || profile?.jobTitle === 'null' ? '' : profile?.jobTitle %>
+                    </h2>
+                    <% if (profile?.phone && profile?.phone != 'null') { %>
+                        <a href="tel:<%= profile?.phone.replace(/[^\d+]/g, '') %>" style="text-decoration: none" class="contact-info-fields">
+                            <svg  xmlns="http://www.w3.org/2000/svg" width="14" height="16"
+                                  viewBox="0 0 14 16" fill="#011A3C" >
+                                <path
+                                        fill="#011A3C"  d="M13.1447 14.4069C12.7934 14.7392 12.3835 14.9506 11.9151 15.0412C11.8273 15.0714 11.7102 15.0714 11.6223 15.0714C11.5931 15.0714 11.5345 15.0714 11.4467 15.0714H11.3003C8.54842 15.162 5.88436 14.1351 3.8058 12.1115C1.49305 9.87645 0.117102 6.64471 0 3.26195C0 3.17134 0 3.08073 0 3.02032C0 2.99012 0 2.95992 0 2.92971C0 2.8391 0 2.74849 0 2.62768V2.59748C0.0878263 1.14772 1.14174 0.0302032 2.42986 0C2.60551 0 2.78116 1.14766e-07 2.92754 0.0302033C3.16174 0.0906098 3.39595 0.181219 3.63015 0.302032L4.36204 4.7117C3.98146 5.19495 3.4545 5.52719 2.89827 5.6178C2.89827 5.6178 2.89827 5.6178 2.86899 5.6178C2.86899 5.6178 2.86899 5.6178 2.83972 5.6178C2.83972 5.6178 2.81044 5.6178 2.81044 5.648C2.78116 5.648 2.78116 5.6782 2.75189 5.6782C2.72261 5.6782 2.72261 5.70841 2.72261 5.70841L2.69334 5.73861C2.69334 5.76881 2.66406 5.76881 2.66406 5.79902C2.66406 5.82922 2.66406 5.82922 2.63479 5.85942C2.63479 5.88963 2.63479 5.88963 2.63479 5.91983V5.95003C2.63479 5.95003 2.63479 5.95003 2.63479 5.98024C2.63479 5.98024 2.63479 5.98024 2.63479 6.01044C3.60088 9.06097 5.82581 11.3866 8.63625 12.2323H8.66552C8.66552 12.2323 8.66552 12.2323 8.6948 12.2323H8.72407C8.75335 12.2323 8.78263 12.2323 8.8119 12.2021C8.8119 12.2021 8.84118 12.2021 8.84118 12.1719C8.87045 12.1719 8.87045 12.1417 8.89973 12.1417L8.929 12.1115C8.929 12.0813 8.95828 12.0813 8.95828 12.0511C8.95828 12.0511 8.95828 12.0209 8.98755 12.0209V11.9907V11.9605V11.9303C9.0461 11.296 9.30958 10.6919 9.71944 10.2087L13.6716 10.7825C13.7887 10.994 13.8765 11.2356 13.9351 11.4772V11.5074C13.9644 11.6282 13.9937 11.7793 13.9937 11.9001C13.9937 11.9605 13.9937 12.0209 13.9937 12.0813C14.0522 13.0478 13.7009 13.8633 13.1447 14.4069Z"
+                                        />
+                            </svg>
+                            <%= profile?.phone %>
+                        </a>
+                    <% } %>
+                    <a href="mailto:<%= profile?.email %>" style="text-decoration: none" class="contact-info-fields">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="11" viewBox="0 0 17 11" fill="none">
+                            <path
+                                    fill="#011A3C" d="M0.759216 0.827238C1.19881 1.05902 7.30519 4.38796 7.53298 4.50785C7.76077 4.62774 7.99256 4.68369 8.35222 4.68369C8.71189 4.68369 8.94368 4.62774 9.17147 4.50785C9.39926 4.38796 15.5056 1.05902 15.9452 0.827238C16.1091 0.743316 16.3848 0.591455 16.4448 0.419614C16.5487 0.115893 16.4368 0 15.9932 0H8.35222H0.71126C0.267669 0 0.155772 0.11989 0.259676 0.419614C0.319621 0.595452 0.595367 0.743316 0.759216 0.827238Z"
+                                    />
+                                <path
+                                        fill="#011A3C"  d="M16.293 1.00706C15.9653 1.1749 13.024 3.26897 11.0778 4.52782L14.3628 8.22441C14.4427 8.30434 14.4787 8.40025 14.4347 8.4482C14.3868 8.49216 14.2828 8.46819 14.1989 8.39226L10.2586 5.06732C9.6631 5.45096 9.24349 5.71472 9.17155 5.75469C8.86384 5.91054 8.64804 5.93052 8.35231 5.93052C8.05658 5.93052 7.84078 5.91054 7.53306 5.75469C7.45713 5.71472 7.04152 5.45096 6.44606 5.06732L2.50569 8.39226C2.42577 8.47218 2.31787 8.49616 2.26991 8.4482C2.22195 8.40424 2.25792 8.30434 2.33785 8.22441L5.61883 4.52782C3.67262 3.26897 0.699356 1.1749 0.371658 1.00706C0.0199816 0.827222 0 1.03903 0 1.20288C0 1.36673 0 9.39533 0 9.39533C0 9.76699 0.547496 10.2306 0.939135 10.2306H8.35231H15.7655C16.1571 10.2306 16.6247 9.76299 16.6247 9.39533C16.6247 9.39533 16.6247 1.36273 16.6247 1.20288C16.6247 1.03503 16.6487 0.827222 16.293 1.00706Z"
+                                        />
+                        </svg>
+                        <%= profile?.email %>
+                    </a>
+                </div>
+                <div class="digital-profile-connect-btn-container">
+                    <button class="digital-profile-connect-btn" >
+                        Connect
+                    </button>
+                    <div class="digital-profile-connect-icon" >
+                        <p id="save-contact">Save Contact</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-media-icons-container">
+            <% if (profile?.instagram && profile.instagram !== '' && profile.instagram !== 'null') { %>
+                <a href="<%= profile?.instagram %>" target="blank" class="anchor">
+                    <div class="single-icon-container">
+                        <%- include('../layouts/partials/instagram.ejs') %>
+                    </div>
+                </a>
+            <% } %>
+            <% if (profile?.linkedIn && profile.linkedIn !== '' && profile.linkedIn !== 'null') { %>
+                <a href="<%= profile?.linkedIn %>" target="blank" class="anchor">
+                    <div class="single-icon-container">
+                        <%- include('../layouts/partials/linkedIn.ejs') %>
+                    </div>
+                </a>
+            <% } %>
+            <% if (profile?.twitter && profile.twitter !== '' && profile.twitter !== 'null') { %>
+                <a href="<%= profile?.twitter %>" target="blank" class="anchor">
+                    <div class="single-icon-container">
+                        <%- include('./layouts/partials/twitter.ejs') %>
+                    </div>
+                </a>
+            <% } %>
+            <% if (profile?.company?.email && profile?.company?.email !== '' && profile?.company?.email !== 'null') { %>
+                <a href="mailto:<%= profile?.company?.email %>" target="blank" class="anchor">
+                    <div class="single-icon-container">
+                        <%- include('../layouts/partials/gmail.ejs') %>
+                    </div>
+                </a>
+            <% } %>
+        </div>
+
+        <div class="digital-profile-contact-container">
+            <% if (profile?.address && profile.address !== '' && profile.address !== 'null') { %>
+                <div class='quick-action-box'>
+                    <h4>Address</h4>
+                    <p><%= profile?.address%></p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+
