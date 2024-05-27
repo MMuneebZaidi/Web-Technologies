@@ -28,6 +28,56 @@ router.get("/crew/add-member", async (req, res) => {
     res.render("site/addProfile", {page: 'crew',profile: profile, profileData: req.session.profileData, edit: false});
 });
 
+router.get("/crew/search/:page?", async (req, res) => {
+    try {
+        const keyword = req.query.q;
+
+        const regex = keyword ? new RegExp(keyword, 'i') : null; // 'i' makes it case-insensitive
+
+        const page = Number(req.params.page) ? Number(req.params.page) : 1;
+        const pageSize = 10;
+
+        let query = { companyId: req.session.profileData.companyId };
+
+        if (keyword) {
+            query.$or = [
+                { name: { $regex: regex } },
+                { jobTitle: { $regex: regex } },
+                { email: { $regex: regex } },
+                { phone: { $regex: regex } }
+            ];
+
+            if (!req.session.searchHistory) {
+                req.session.searchHistory = [];
+            }
+            req.session.searchHistory.push(keyword);
+        }
+
+        const members = await Profile.find(query)
+            .skip(pageSize * (page - 1))
+            .limit(pageSize);
+
+        const total = await Profile.find(query).countDocuments();
+        const totalPages = Math.ceil(total / pageSize);
+
+        const crew = {
+            members,
+            total,
+            page,
+            pageSize,
+            totalPages,
+        };
+
+        return res.render("site/crewSearch", { searchHistory: req.session.searchHistory ,lastSearch:keyword, crew: crew, page: "search", profileData: req.session.profileData });
+
+    } catch (err) {
+        console.error(err);
+        req.flash("danger", "An error occurred while searching for crew members.");
+        return res.redirect("/crew/add-member");
+    }
+});
+
+
 router.get("/crew/:page?", async (req, res) => {
 
     let page = Number(req.params.page) ? Number(req.params.page) : 1;

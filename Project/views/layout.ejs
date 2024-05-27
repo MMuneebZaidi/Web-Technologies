@@ -24,7 +24,7 @@
             <%- include('./layouts/partials/navbar.ejs', { page: page }) %>
         <% } %>
 
-        <% if (page === 'profile' || page === 'crew') { %>
+        <% if (page === 'profile' || page === 'crew' || page === 'search') { %>
             <%- include('./layouts/partials/sidebar.ejs', { profileData: profileData }) %>
         <% } %>
 

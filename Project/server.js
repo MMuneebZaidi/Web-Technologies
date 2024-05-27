@@ -22,7 +22,7 @@ server.use(cookieParser());
 
 server.use(session({
     secret: process.env.SESSIONSECRET,
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 6000000 },
     resave: true,
     saveUninitialized: true,
 }));

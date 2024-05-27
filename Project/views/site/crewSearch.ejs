@@ -2,8 +2,24 @@
     <div class="row-1">
         <h1>Crew (<%= crew.total %>)</h1>
         <div class="btn-div">
-            <a href="/crew/add-member" type="submit" class="update-btn">Add Member</a>
+            <input placeholder="Search" id="search" onchange="search()" type="search" name="search" value="<%= lastSearch ?? ''%>" />
+            <% if(searchHistory) {%>
+                <div class="history">
+                    <h3>Search History</h3>
+                    <ul>
+                        <% searchHistory.forEach(item => { %>
+                            <li onclick="window.location.href='/crew/search?q=<%= item %>'"><%= item %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
         </div>
+        <script>
+            function search() {
+                const keyword = document.getElementById('search').value;
+                window.location.href = `/crew/search?q=${keyword}`;
+            }
+        </script>
     </div>
     <table>
         <thead>

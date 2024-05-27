@@ -156,6 +156,7 @@ router.post("/contacts", async (req, res) => {
 router.post("/logout", (req, res) => {
     req.session.user = null;
     req.session.profileData = null;
+    req.session.searchHistory = null;
     console.log("Logged out");
     res.flash("success", "Logged out Successfully");
     return res.redirect("/login");
