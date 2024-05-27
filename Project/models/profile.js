@@ -3,6 +3,7 @@ let profileSchema = mongoose.Schema({
     id: String,
     userId: String,
     name: String,
+    username: String,
     email: String,
     phone: String,
     instagram: String,
@@ -11,6 +12,17 @@ let profileSchema = mongoose.Schema({
     jobTitle: String,
     companyId: String,
     leads: String,
+    address: String,
+    image:
+        {
+            data: Buffer,
+            contentType: String
+        },
+    cover:
+        {
+            data: Buffer,
+            contentType: String
+        }
 });
 
 let Profile = mongoose.model("Profile", profileSchema);

@@ -1,0 +1,103 @@
+<div class="main-box">
+    <form method="post" action="<%= edit ? 'http://localhost:4000/crew/profile/' + profile.id : 'http://localhost:4000/profile' %>" enctype="multipart/form-data">
+        <div class="row-1">
+            <h1>Profile Information</h1>
+            <div class="btn-div">
+                <button type="submit" class="update-btn">Update</button>
+                <% if(profile.id !== profileData.id && edit) {%>
+                    <button type="button" onclick="deleteProfile()" class="delete-btn">Delete</button>
+                <% } %>
+            </div>
+        </div>
+
+        <input id="imageInput" type="file" name="image" accept="image/*" style="display: none;" />
+        <input id="coverInput" type="file" name="cover" accept="image/*" style="display: none;" />
+
+        <div class="row-images">
+            <div class="image-box">
+                <h1>Profile</h1>
+                <img class="pic" onclick="triggerImageInput()" src="<%= profile.image && profile.image.data ? 'data:image/' + profile.image.contentType + ';base64,' + profile.image.data.toString('base64') : '/assets/picPlaceholder.png' %>"
+                     alt="profile image" />
+            </div>
+            <div class="image-box">
+                <h1>Cover</h1>
+                <img class="cover" onclick="triggerCoverInput()" src="<%= profile.cover && profile.cover.data ? 'data:image/' + profile.cover.contentType + ';base64,' + profile.cover.data.toString('base64') : '/assets/coverPlaceolder.png' %>"
+                     alt="cover image" />
+            </div>
+        </div>
+        <script>
+            function triggerImageInput() {
+                document.getElementById('imageInput').click();
+            }
+
+            function triggerCoverInput() {
+                document.getElementById('coverInput').click();
+            }
+            function deleteProfile() {
+                $.ajax({
+                    url: `http://localhost:4000/profile/delete/<%= profile.id %>`,
+                    type: 'DELETE',
+                    contentType: 'application/json',
+                    success: function(result) {
+                        console.log('Success:', result);
+                        // Optionally redirect or update the UI after success
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                    }
+                });
+            }
+        </script>
+        <div class="row-input">
+            <div class="col-input">
+                <label for="name">Name</label>
+                <input placeholder="Enter Name" type="text" id="name" name="name" value="<%= profile.name %>" />
+            </div>
+            <div class="col-input">
+                <label for="jobTitle">Job Title</label>
+                <input placeholder="Enter Job Title" type="text" id="jobTitle" name="jobTitle" value="<%= profile.jobTitle %>" required/>
+            </div>
+
+        </div>
+        <div class="row-input">
+            <div class="col-input">
+                <label for="email">Email</label>
+                <input
+                        placeholder="Enter Email"
+                        type="text"
+                        id="email"
+                        name="email"
+                        value="<%= profile.email %>"
+                        style="cursor: <%= edit ? 'not-allowed' : 'text' %>;"
+                        <%= edit ? 'disabled readonly' : '' %>
+                />
+            </div>
+            <div class="col-input">
+                <label for="phone">Phone Number</label>
+                <input placeholder="Enter Phone" type="text" id="phone" name="phone" value="<%= profile.phone %>" required />
+            </div>
+        </div>
+        <div class="row-input">
+            <div class="col-input">
+                <label for="address">Address</label>
+                <input placeholder="Enter Address" type="text" id="address" name="address" value="<%= profile.address %>" />
+            </div>
+            <div class="col-input">
+                <label for="twitter">Twitter</label>
+                <input placeholder="Enter Twitter" type="text" id="twitter" name="twitter" value="<%= profile.twitter %>" />
+            </div>
+        </div>
+        <div class="row-input">
+            <div class="col-input">
+                <label for="instagram">Instagram</label>
+                <input placeholder="Enter Instagram" type="text" id="instagram" name="instagram" value="<%= profile.instagram %>" />
+            </div>
+            <div class="col-input">
+                <label for="linkedIn">LinkedIn</label>
+                <input placeholder="Enter LinkedIn" type="text" id="linkedIn" name="linkedIn" value="<%= profile.linkedIn %>" />
+            </div>
+        </div>
+
+    </form>
+
+</div>

@@ -6,6 +6,7 @@ let User = require("../../models/user");
 let Profile = require("../../models/profile");
 let Company = require("../../models/company");
 let Contact = require("../../models/contacts");
+const generateUsername = require("../../helpers/usernameGenerator");
 
 
 router.get("/register", (req, res) => {
@@ -62,11 +63,15 @@ router.post("/register", async (req, res) => {
     user = new User(userData);
     await user.save();
 
+    const username = generateUsername(req.body.name);
+
+
     let profileData = {
         id: uuid(),
         userId: user.id,
         name: user.name,
         email: user.email,
+        username: username,
         leads : 0
     }
 
@@ -86,11 +91,21 @@ router.post("/register", async (req, res) => {
     let company = await Company(companyData);
     await company.save();
 
-    res.render("/login");
+    res.render('site/login', {
+        page: 'login',
+        isMobile: false,
+        hamburger: false,
+        emailError: '',
+        errorMessage: '',
+        showPassword: false,
+        otpOption: true,
+        loader: false
+    });
 });
 
 router.get("/logout", (req, res) => {
     req.session.user = null;
+    req.session.profile = null;
     res.flash("success", "Logged out Successfully");
     res.redirect("/login");
 });
@@ -122,9 +137,13 @@ router.post("/login", async (req, res) => {
         return res.redirect("/login");
     }
 
+    let profile = await Profile.findOne({ userId: user.id });
+
+
     req.session.user = user;
+    req.session.profileData = profile;
     res.flash("success", user.name + " Logged In");
-    return res.redirect("/");
+    return res.redirect("/crew");
 });
 
 router.get("/contacts", async (req, res) => {

@@ -1,39 +1,41 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const Mobile = require("./models/Mobile");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 // const isAuthenticated = require("./middlewares/isAuthenticated");
-let server = express();
-server.use(express.json());
+require('dotenv').config();
 
+var bodyParser = require('body-parser');
+
+
+mongoose.connect(process.env.DATABASE).then((data) => {
+    console.log("DB Connected");
+});
+
+let server = express();
+server.use(express.static("public"));
+server.set("view engine", "ejs");
+server.use(bodyParser.urlencoded({ extended: false }))
+server.use(bodyParser.json());
 
 server.use(cookieParser());
-// Set up session middleware
+
 server.use(session({
-    secret: 'yourSecretKey',
-    resave: false,
-    saveUninitialized: true
+    secret: process.env.SESSIONSECRET,
+    cookie: { maxAge: 60000 },
+    resave: true,
+    saveUninitialized: true,
 }));
 
-server.use(express.urlencoded( { extended: true }));
 server.use(require("./middleware/flashmiddleware"));
-server.set("view engine", "ejs");
-server.use(express.static("public"));
 var expressLayouts = require("express-ejs-layouts");
 server.use(expressLayouts);
-// server.use(require("./middlewares/siteMiddleware"));
-// let mobileApiRouter = require("./routes/api/mobiles");
 
-// server.use("/", mobileApiRouter);
 server.use("/", require("./routes/site/auth"));
-// server.use("/", require("./routes/api/games"));
 server.use("/", require("./routes/site/company"));
 server.use("/", require("./routes/site/profile"));
-//
-// server.get("/contact-us.html", isAuthenticated, (req, res) => {
-//     res.render("contact-us");
-// });
+server.use("/", require("./routes/api/crew"));
+
 server.get("/", (req, res) => {
     const page = 'home';
     const hamburger = true;
@@ -41,10 +43,6 @@ server.get("/", (req, res) => {
     res.render("site/homepage",{page, hamburger, isMobile});
 });
 
-//mongoose accepts a connection string to your db and attempts a connections here
-mongoose.connect("mongodb://localhost:27017/DigiConnect").then((data) => {
-    console.log("DB Connected");
-});
-server.listen(4000, () => {
+server.listen(process.env.PORT, () => {
     console.log("Server started at localhost:4000");
 });

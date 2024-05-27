@@ -1,0 +1,27 @@
+<div class="sidebar">
+    <div class="upper">
+        <h1>NEBE</h1>
+        <a href="/profile" class="<%= page === 'profile' ? 'sidebar-btn-active' : 'sidebar-btn' %>">
+            Profile
+        </a>
+        <a href="/crew" class="<%= page === 'crew' ? 'sidebar-btn-active' : 'sidebar-btn' %>">
+            Crew
+        </a>
+    </div>
+    <div class="lower">
+        <button class="logout">
+            Logout
+        </button>
+        <div class="user-info">
+            <div class="user-image">
+                <img
+                        src="<%= profileData.image && profileData.image.data ? 'data:image/' + profileData.image.contentType + ';base64,' + profileData.image.data.toString('base64') : '/assets/picPlaceholder.png' %>"
+                        alt="user-image">
+
+            </div>
+            <div class="user-name">
+                <h3><%= profileData.name%></h3>
+            </div>
+        </div>
+    </div>
+</div>
