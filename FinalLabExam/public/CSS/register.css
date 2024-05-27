@@ -1,0 +1,411 @@
+.new-login-main-container {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-left-image {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 25%;
+    height: 60%;
+    flex-shrink: 0;
+    background: url('../assets/bg-left.png');
+    mix-blend-mode: normal;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.login-right-image {
+    position: absolute;
+    right: -100px;
+    top: 20%;
+    width: 22%;
+    height: 50%;
+    flex-shrink: 0;
+    background: url('../assets/bg-right.png');
+    mix-blend-mode: normal;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+    .login-left-image {
+        display: none;
+    }
+
+    .login-right-image {
+        display: none;
+    }
+}
+
+.new-login-form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-login-form-container form h2 {
+    color: #fff;
+    text-align: center;
+    font-family: Urbanist;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+.new-login-form-container form p {
+    color: #fff;
+    text-align: center;
+    font-family: Urbanist;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    width: 451px;
+}
+
+.switch-button-container {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    padding: 8px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.switch-button-container button {
+    width: 50%;
+    display: flex;
+    height: 34px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    border-radius: 30px;
+    background-color: transparent;
+    transition: all 0.5s ease;
+}
+
+.switch-button-container .active-button {
+    border-radius: 30px;
+    background: #205BF1;
+    border: none !important;
+}
+
+.input-container {
+    margin-top: 32px;
+    border-radius: 7px;
+    border: 1px solid #fff;
+    width: 423px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.input-container div {
+    width: 15%;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.input-container input,
+.input-container input:-webkit-autofill {
+    caret-color: #fff; /* Red color for the caret */
+    border: none;
+    background-color: transparent !important;
+    height: 100%;
+    width: 100%;
+    -webkit-box-shadow: none !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.input-container input::placeholder {
+    color: #837d7d;
+    font-family: Urbanist;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.input-container input:focus {
+    border: none;
+    outline: none;
+}
+
+.input-container .password-icon-container {
+    cursor: pointer;
+}
+
+.login-form-checkbox-container {
+    display: flex;
+    justify-content: space-between;
+    width: 423px;
+    margin: 15px 0 -15px 0;
+}
+
+.login-form-checkbox-container input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 2px solid #fff;
+    filter: invert(30%) hue-rotate(220deg) brightness(1.7);
+}
+
+.login-form-checkbox-container p {
+    width: fit-content;
+    margin: 0%;
+    display: flex;
+    align-items: center;
+}
+
+.login-form-checkbox-container div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.login-form-checkbox-container .forgot-password a {
+    color: #fff;
+    font-family: Urbanist;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+}
+
+.login-form-checkbox-container .forgot-password:hover {
+    cursor: pointer;
+}
+
+.continue-button {
+    cursor: pointer;
+    margin-top: 32px;
+    display: flex;
+    width: 423px;
+    padding: 20px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    background: #205BF1;
+    box-shadow: 0px 5px 15px 0px rgba(32, 91, 241, 0.20);
+    color: white;
+    font-family: Urbanist;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    display: flex;
+    height: 60px;
+}
+
+.new-login-form-container form p:last-child {
+    color: #fff;
+    font-family: Urbanist;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+}
+
+.new-login-form-container form p:last-child a {
+    color: #fff;
+    font-family: Urbanist;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+}
+
+.otp-input-style {
+    width: 62px !important;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    margin: 10px;
+    background-color: transparent;
+    color: #fff;
+    text-align: center;
+    font-family: Urbanist;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.resend-otp-container {
+    color: #fff !important;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 12px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.resend-otp-container b {
+    color: #fff;
+    opacity: 1 !important;
+}
+
+.button-container {
+    display: flex;
+    width: 423px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.button-container .resend-button {
+    display: flex;
+    width: 204px;
+    padding: 20px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    border: 1px solid #fff;
+    box-shadow: 0px 5px 15px 0px rgba(32, 91, 241, 0.20);
+    background-color: transparent;
+    color: #fff;
+    font-family: Urbanist;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    box-shadow: none;
+}
+
+.button-container .confirm-button {
+    display: flex;
+    width: 204px;
+    padding: 20px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    background: #205BF1;
+    color: white;
+    font-family: Urbanist;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.invalid-field {
+    border-color: red !important;
+}
+
+.error-message {
+    color: red !important;
+    text-align: left !important;
+    width: 423px !important;
+    font-size: 12px !important;
+}
+
+.error-message-otp {
+    color: red !important;
+    width: 423px !important;
+    font-size: 14px !important;
+    margin: 40px 0 -80px 0;
+}
+
+.parent-input-containers {
+    display: flex;
+    justify-content: space-between;
+    width: 423px;
+}
+
+.parent-input-containers .input-container-half {
+    margin-top: 32px;
+    border-radius: 7px;
+    border: 1px solid #fff;
+    width: 199px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.parent-input-containers .input-container-half div {
+    width: 20%;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.parent-input-containers .input-container-half input,
+.parent-input-containers .input-container-half input:-webkit-autofill {
+    border: none;
+    background-color: transparent !important;
+    height: 100%;
+    width: 80%;
+    -webkit-box-shadow: none !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.parent-input-containers .input-container-half input::placeholder {
+    color: #fff;
+    font-family: Urbanist;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.parent-input-containers .input-container-half input:focus {
+    border: none;
+    outline: none;
+}
+
+.parent-input-containers .input-container-half .password-icon-container {
+    cursor: pointer;
+}
+
+.circularloader2 {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    border: 5px solid white;
+    border-left-color: grey;
+    animation: rotatingloader 2s infinite;
+}
+
+@keyframes rotatingloader {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+svg {
+    stroke: #fff;
+}

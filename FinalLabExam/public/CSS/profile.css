@@ -1,0 +1,125 @@
+
+
+.main-box{
+    height: 100vh;
+    width: calc(100vw - 250px);
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+    font-family: Poppins , sans-serif;
+    color: #fff;
+    background-color: #18191D;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-left: 50px;
+}
+
+
+.row-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    width: calc(100% - 40px);
+}
+
+.row-1 h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+.btn-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+.update-btn{
+    background-color: transparent;
+    color: #fff;
+    font-family: Poppins , sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 0 solid #4d4d4e;
+    margin-right: 50px;
+    font-weight: 600;
+}
+
+.update-btn:hover{
+    background-color: #4d4d4e;
+}
+
+.row-images{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    width: calc(70% - 40px);
+}
+.row-images .image-box{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.row-images .image-box h1{
+    font-size: 20px;
+    font-weight: 600;
+}
+.row-images .image-box .pic{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.row-images .image-box .cover{
+    width: 350px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.row-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    width: calc(85% - 40px);
+}
+.row-input .col-input{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main-box input{
+    height: 30px;
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #403e3e;
+    border: 0px solid #403e3e;
+    color: #fff;
+    font-family: Poppins , sans-serif;
+    font-size: 15px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+.main-box input:focus{
+    outline: none;
+}
+
+.main-box input::placeholder{
+    color: #b3b3b3;
+    font-family: Poppins , sans-serif;
+    font-size: 13px;
+    border-radius: 5px;
+}

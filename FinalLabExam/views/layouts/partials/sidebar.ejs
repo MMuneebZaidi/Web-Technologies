@@ -1,0 +1,46 @@
+<div class="sidebar">
+    <div class="upper">
+        <h1>NEBE</h1>
+        <a href="/profile" class="<%= page === 'profile' ? 'sidebar-btn-active' : 'sidebar-btn' %>">
+            Profile
+        </a>
+        <a href="/crew" class="<%= page === 'crew' ? 'sidebar-btn-active' : 'sidebar-btn' %>">
+            Crew
+        </a>
+        <a href="/crew/search" class="<%= page === 'search' ? 'sidebar-btn-active' : 'sidebar-btn' %>">
+            Search
+        </a>
+    </div>
+    <div class="lower">
+        <button onclick="logout()" class="logout">
+            Logout
+        </button>
+        <div class="user-info">
+            <div class="user-image">
+                <img
+                        src="<%= profileData.image && profileData.image.data ? 'data:image/' + profileData.image.contentType + ';base64,' + profileData.image.data.toString('base64') : '/assets/picPlaceholder.png' %>"
+                        alt="user-image">
+
+            </div>
+            <div class="user-name">
+                <h3><%= profileData.name%></h3>
+            </div>
+        </div>
+    </div>
+    <script>
+        function logout() {
+            $.ajax({
+                url: `http://localhost:4000/logout`,
+                type: 'POST',
+                contentType: 'application/json',
+                success: function(result) {
+                    window.location.href = '/login';
+                    console.log('Success:', result);
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+    </script>
+</div>
